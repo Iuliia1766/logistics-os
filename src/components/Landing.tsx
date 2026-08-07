@@ -27,6 +27,10 @@ export function Landing() {
           </div>
           <div className="ld-nav-actions">
             <Link className="btn btn-ghost" href="/login">Sign in</Link>
+            {/* Top-right is where people look for this first. It cannot go
+                straight to /signup because the account type has to be chosen
+                first, so it jumps to the two cards. */}
+            <a className="btn btn-primary" href="#signup">Sign up</a>
           </div>
         </div>
       </header>
@@ -51,7 +55,7 @@ export function Landing() {
         </section>
 
         {/* The choice is the page. Two accounts, two different apps. */}
-        <section className="ld-doors" aria-label="Create an account">
+        <section className="ld-doors" id="signup" aria-label="Create an account">
           <article className="ld-door">
             <div className="ld-door-top">
               <span className="ld-door-ico"><Icon name="truck" size={22} /></span>
