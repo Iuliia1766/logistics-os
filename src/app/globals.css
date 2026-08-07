@@ -347,3 +347,30 @@ select.input{appearance:none;background-image:linear-gradient(45deg,transparent 
 .act-row{display:flex;gap:12px;font-size:.8rem;padding:5px 0}
 .act-row .t{font-family:var(--f-mono);font-variant-numeric:tabular-nums;font-size:.7rem;color:var(--ink-4);width:62px;flex-shrink:0;padding-top:2px}
 .act-row .m{color:var(--ink-3);line-height:1.5}
+/* ============ SIGN-UP ENTRY POINTS ============
+   Two doors off the login screen. Deliberately quieter than the
+   sign-in button — most arrivals already have an account — but
+   large enough to read as the obvious next step for the rest. */
+.signup-cta{margin-top:22px;padding-top:18px;border-top:1px solid var(--line)}
+.signup-lead{display:block;font-size:.72rem;letter-spacing:.06em;text-transform:uppercase;
+  color:var(--ink-4);font-weight:500;margin-bottom:10px}
+.signup-actions{display:flex;flex-direction:column;gap:8px}
+.signup-btn{display:flex;align-items:center;gap:11px;width:100%;text-align:left;
+  border:1px solid var(--line);background:var(--surface-2);border-radius:var(--r);
+  padding:11px 13px;text-decoration:none;color:inherit;
+  transition:border-color .15s,background .15s,transform .15s}
+.signup-btn:hover{border-color:var(--accent);background:var(--accent-soft)}
+.signup-btn:active{transform:translateY(1px)}
+.signup-btn .sb-ico{display:flex;align-items:center;justify-content:center;
+  width:34px;height:34px;border-radius:9px;flex-shrink:0;
+  background:var(--surface);border:1px solid var(--line);color:var(--ink-3)}
+.signup-btn:hover .sb-ico{color:var(--accent);border-color:var(--accent-line)}
+.signup-btn .sb-text{flex:1;min-width:0}
+.signup-btn .sb-t{display:block;font-size:.85rem;font-weight:600;color:var(--ink);line-height:1.25}
+.signup-btn .sb-d{display:block;font-size:.74rem;color:var(--ink-3);margin-top:1px}
+.signup-btn .sb-arrow{color:var(--ink-4);flex-shrink:0;transition:transform .15s,color .15s}
+.signup-btn:hover .sb-arrow{color:var(--accent);transform:translateX(2px)}
+@media (prefers-reduced-motion:reduce){
+  .signup-btn,.signup-btn .sb-arrow{transition:none}
+  .signup-btn:hover .sb-arrow{transform:none}
+}

@@ -15,8 +15,8 @@ function Submit() {
   );
 }
 
-export function SignUpForm() {
-  const [role, setRole] = useState<UserRole>('driver');
+export function SignUpForm({ initialRole = 'driver' }: { initialRole?: UserRole }) {
+  const [role, setRole] = useState<UserRole>(initialRole);
   const [state, action] = useActionState<FormState, FormData>(signUp, {});
 
   return (
@@ -25,7 +25,7 @@ export function SignUpForm() {
         <button type="button" className={'role-card' + (role === 'driver' ? ' on' : '')}
           aria-pressed={role === 'driver'} onClick={() => setRole('driver')}>
           <span className="rc-ico"><Icon name="truck" size={20} /></span>
-          <span className="rc-t">Driver</span>
+          <span className="rc-t">Carrier</span>
           <span className="rc-d">I haul freight</span>
         </button>
         <button type="button" className={'role-card' + (role === 'shipper' ? ' on' : '')}
@@ -44,7 +44,7 @@ export function SignUpForm() {
           <input className="input" id="full_name" name="full_name" required autoComplete="name" />
         </div>
         <div className="field">
-          <label htmlFor="company">{role === 'driver' ? 'Carrier / company' : 'Company'}</label>
+          <label htmlFor="company">{role === 'driver' ? 'Carrier name' : 'Company'}</label>
           <input className="input" id="company" name="company" autoComplete="organization" />
         </div>
 

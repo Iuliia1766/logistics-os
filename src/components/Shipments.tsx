@@ -87,7 +87,7 @@ export function Shipments({ loads, events }: { loads: Load[]; events: LoadEvent[
             <dl className="kv">
               <dt>Broker of record</dt><dd className="txt">{sel.broker_company ?? '—'}</dd>
               <dt>Booked by</dt><dd className="txt">{sel.broker_rep ?? '—'}</dd>
-              <dt>Carrier</dt><dd className="txt">{sel.carrier_company ?? 'Awaiting a driver'}</dd>
+              <dt>Carrier</dt><dd className="txt">{sel.carrier_company ?? 'Awaiting a carrier'}</dd>
               <dt>Driver</dt><dd className="txt">{sel.driver_name ?? '—'}</dd>
             </dl>
             {sel.stage === 0 && (

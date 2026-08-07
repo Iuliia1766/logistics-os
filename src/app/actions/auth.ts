@@ -32,7 +32,7 @@ export async function signIn(_prev: FormState, formData: FormData): Promise<Form
   // silently dropping them into the other portal.
   if (profile.role !== role) {
     await supabase.auth.signOut();
-    const other = profile.role === 'driver' ? 'Driver' : 'Shipper';
+    const other = profile.role === 'driver' ? 'Carrier' : 'Shipper';
     return { error: `That is a ${other.toLowerCase()} account — pick ${other} above and try again.` };
   }
 

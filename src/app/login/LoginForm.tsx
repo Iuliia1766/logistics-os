@@ -10,7 +10,7 @@ function Submit({ role }: { role: UserRole }) {
   const { pending } = useFormStatus();
   return (
     <button className="btn btn-primary" type="submit" disabled={pending}>
-      {pending ? 'Signing in…' : `Sign in as ${role === 'driver' ? 'Driver' : 'Shipper'}`}
+      {pending ? 'Signing in…' : `Sign in as ${role === 'driver' ? 'Carrier' : 'Shipper'}`}
     </button>
   );
 }
@@ -25,7 +25,7 @@ export function LoginForm({ initialRole }: { initialRole: UserRole }) {
         <button type="button" className={'role-card' + (role === 'driver' ? ' on' : '')}
           aria-pressed={role === 'driver'} onClick={() => setRole('driver')}>
           <span className="rc-ico"><Icon name="truck" size={20} /></span>
-          <span className="rc-t">Driver</span>
+          <span className="rc-t">Carrier</span>
           <span className="rc-d">Search loads, see $/mi and deadhead, book and run</span>
         </button>
         <button type="button" className={'role-card' + (role === 'shipper' ? ' on' : '')}

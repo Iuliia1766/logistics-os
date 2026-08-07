@@ -25,7 +25,7 @@ export function PortalChrome({
           <div className="mark"><Icon name="radio" size={17} /></div>
           <div className="tb-name">
             AI Logistics OS
-            <span>{isDriver ? 'Driver portal' : 'Shipper portal'}</span>
+            <span>{isDriver ? 'Carrier portal' : 'Shipper portal'}</span>
           </div>
         </div>
 

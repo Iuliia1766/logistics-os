@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import { LoginForm } from './LoginForm';
 import { BrandPanel } from '@/components/BrandPanel';
+import { Icon } from '@/components/Icons';
 
 export default async function LoginPage({
   searchParams,
@@ -15,7 +16,7 @@ export default async function LoginPage({
           <p className="lf-eyebrow">Sign in</p>
           <h2 className="lf-title">Choose your account</h2>
           <p className="lf-note">
-            Driver and shipper accounts open completely different apps — different data,
+            Carrier and shipper accounts open completely different apps — different data,
             different actions, one shared ledger underneath.
           </p>
 
@@ -32,9 +33,29 @@ export default async function LoginPage({
 
           <LoginForm initialRole={sp.role === 'shipper' ? 'shipper' : 'driver'} />
 
-          <p style={{ fontSize: '.8rem', color: 'var(--ink-3)', marginTop: 18 }}>
-            No account yet? <Link className="link-btn" href="/signup">Create one</Link>
-          </p>
+          {/* Two doors, because the two accounts ask for different things
+              up front — a carrier needs authority and a home ZIP. */}
+          <div className="signup-cta">
+            <span className="signup-lead">New here? Create an account</span>
+            <div className="signup-actions">
+              <Link className="signup-btn" href="/signup?role=carrier">
+                <span className="sb-ico"><Icon name="truck" size={18} /></span>
+                <span className="sb-text">
+                  <span className="sb-t">Sign up as a Carrier</span>
+                  <span className="sb-d">I haul freight</span>
+                </span>
+                <Icon name="arrow" size={15} className="sb-arrow" />
+              </Link>
+              <Link className="signup-btn" href="/signup?role=shipper">
+                <span className="sb-ico"><Icon name="building" size={18} /></span>
+                <span className="sb-text">
+                  <span className="sb-t">Sign up as a Shipper</span>
+                  <span className="sb-d">I have freight to move</span>
+                </span>
+                <Icon name="arrow" size={15} className="sb-arrow" />
+              </Link>
+            </div>
+          </div>
         </div>
       </div>
     </div>
