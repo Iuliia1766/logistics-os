@@ -184,6 +184,11 @@ with the carrier account.
 **Vercel build fails** — almost always a missing environment variable. Check both are
 set, then **Deployments → ⋯ → Redeploy**.
 
+**"No Output Directory named 'public' found"** — Vercel's Framework Preset got set to
+something other than Next.js. Go to **Settings → General → Build & Development
+Settings**, set **Framework Preset** to **Next.js**, turn off any **Output Directory**
+override, then **Deployments → ⋯ → Redeploy**.
+
 ---
 
 ## Turning Premium on for yourself
