@@ -17,25 +17,6 @@ export async function sendMessage(body: string): Promise<ActionResult> {
   return { ok: true, message: 'Sent.' };
 }
 
-/**
- * Premium is a flag on the profile. When you take real money, point your
- * payment provider's webhook at set_premium() and stop calling this from
- * the client — nothing else in the app has to change.
- */
-export async function setPremium(on: boolean): Promise<ActionResult> {
-  const supabase = await createClient();
-  const { error } = await supabase.rpc('set_premium', { p_on: on });
-  if (error) return { ok: false, message: error.message };
-
-  revalidatePath('/', 'layout');
-  return {
-    ok: true,
-    message: on
-      ? 'Premium active — broker reliability unlocked across the board.'
-      : 'Premium switched off.',
-  };
-}
-
 /** Deadhead is measured from here, so drivers change it as they move. */
 export async function setHomeZip(zip: string): Promise<ActionResult> {
   if (!/^\d{5}$/.test(zip)) return { ok: false, message: 'Enter a 5-digit ZIP.' };

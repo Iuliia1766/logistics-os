@@ -1,10 +1,4 @@
-'use client';
-
-import { useState, useTransition } from 'react';
-import { useRouter } from 'next/navigation';
 import { Icon } from '@/components/Icons';
-import { Toast } from '@/components/Toast';
-import { setPremium } from '@/app/actions/account';
 
 const FREE = [
   'Full load board and search',
@@ -29,18 +23,6 @@ const PRO = [
 ];
 
 export function PremiumPanel({ isPremium }: { isPremium: boolean }) {
-  const router = useRouter();
-  const [toast, setToast] = useState<string | null>(null);
-  const [pending, startTransition] = useTransition();
-
-  function toggle() {
-    startTransition(async () => {
-      const res = await setPremium(!isPremium);
-      setToast(res.message);
-      if (res.ok) router.refresh();
-    });
-  }
-
   return (
     <>
       <div className="page-head">
@@ -76,22 +58,30 @@ export function PremiumPanel({ isPremium }: { isPremium: boolean }) {
               <li key={f}><Icon name="check" size={14} style={{ color: 'var(--good)' }} /><span>{f}</span></li>
             ))}
           </ul>
-          <button className={'btn ' + (isPremium ? 'btn-ghost' : 'btn-gold')} style={{ width: '100%' }}
-            onClick={toggle} disabled={pending}>
-            {isPremium ? 'Switch Premium off' : <><Icon name="star" size={15} /> Activate Premium</>}
-          </button>
+          {isPremium ? (
+            <div className="acct-type" style={{ marginBottom: 0 }}>
+              <span className="acct-type-ico"><Icon name="check" size={16} /></span>
+              <div>
+                <div className="acct-type-t">Premium is active</div>
+                <div className="acct-type-d">Broker reliability is unlocked across the board.</div>
+              </div>
+            </div>
+          ) : (
+            <button className="btn btn-gold" style={{ width: '100%' }} disabled>
+              <Icon name="star" size={15} /> Checkout coming soon
+            </button>
+          )}
         </div>
       </div>
 
       <p className="md-foot" style={{ padding: '18px 0 0', maxWidth: '44rem' }}>
-        No payment is taken yet — this switches the <code>is_premium</code> flag on your profile.
-        To charge for it, point your payment provider&rsquo;s webhook at the{' '}
-        <code>set_premium()</code> function and stop calling it from the client. The gate itself is
-        already real: reliability columns are withheld by a column-level grant in Postgres, so a
-        free account cannot read them even by querying the API directly.
+        No payment is taken yet, and there is deliberately no button that grants this to
+        yourself — entitlement moves only from the server, through{' '}
+        <code>admin_set_premium()</code>, which is where a payment provider&rsquo;s webhook
+        belongs. The gate itself is real: reliability columns are withheld by a column-level
+        grant in Postgres, so a free account cannot read them even by calling the API directly.
       </p>
 
-      <Toast message={toast} onDismiss={() => setToast(null)} />
     </>
   );
 }

@@ -39,7 +39,12 @@
       "Bash(git init *)",
       "Bash(git add *)",
       "Bash(git -c 'user.name=Iuliia Bakhshalieva' -c user.email=iuliia.bakhshalieva@gmail.com commit -q -m ' *)",
-      "Bash(git grep *)"
+      "Bash(git grep *)",
+      "Bash(xargs -0 du -h)",
+      "Bash(git check-ignore *)",
+      "Bash(curl -s --max-time 20 https://nodejs.org/dist/index.json)",
+      "Bash(curl -s -o /dev/null --max-time 2 http://localhost:3111/login)",
+      "Read(//private/tmp/**)"
     ]
   }
 }
