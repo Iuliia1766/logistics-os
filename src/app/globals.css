@@ -498,6 +498,11 @@ select.input{appearance:none;background-image:linear-gradient(45deg,transparent 
 .ld-foot-links{display:flex;gap:20px;flex-wrap:wrap}
 .ld-foot-links a{font-size:.82rem;color:var(--ink-3);transition:color .15s}
 .ld-foot-links a:hover{color:var(--ink)}
+.ld-foot-contact{display:flex;gap:20px;flex-wrap:wrap;margin-top:16px}
+.ld-foot-contact a{display:inline-flex;align-items:center;gap:7px;
+  font-size:.82rem;color:var(--ink-3);transition:color .15s}
+.ld-foot-contact a:hover{color:var(--accent)}
+.ld-foot-contact svg{flex-shrink:0;color:var(--ink-4)}
 .ld-foot-bot{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;
   margin-top:22px;padding-top:16px;border-top:1px solid var(--line-soft);
   font-size:.74rem;color:var(--ink-4)}

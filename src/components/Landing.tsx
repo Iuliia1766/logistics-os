@@ -279,6 +279,14 @@ export function Landing() {
             <Link href="/login">Sign in</Link>
           </nav>
         </div>
+        <div className="ld-foot-contact">
+          <a href="mailto:ops@freightforwardco.com">
+            <Icon name="msg" size={14} /> ops@freightforwardco.com
+          </a>
+          <a href="tel:+17472412929">
+            <Icon name="phone" size={14} /> (747) 241-2929
+          </a>
+        </div>
         <div className="ld-foot-bot">
           <span>freightforwardco.com</span>
           <span>ZIP geography from GeoNames, CC BY 4.0</span>
