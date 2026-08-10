@@ -1,4 +1,4 @@
-import type { Metadata } from 'next';
+import type { Metadata, Viewport } from 'next';
 import './globals.css';
 
 export const metadata: Metadata = {
@@ -17,6 +17,15 @@ export const metadata: Metadata = {
     siteName: 'FreightForward Co.',
     type: 'website',
   },
+  appleWebApp: {
+    capable: true,
+    statusBarStyle: 'default',
+    title: 'FreightFwd',
+  },
+};
+
+export const viewport: Viewport = {
+  themeColor: '#1d4ed8',
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {

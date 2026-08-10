@@ -1,6 +1,6 @@
 import type { SVGProps } from 'react';
 
-const P: Record<string, string> = {
+export const P: Record<string, string> = {
   radio: 'M12 9.8a2.2 2.2 0 1 0 0 4.4 2.2 2.2 0 0 0 0-4.4M7.8 8a6 6 0 0 0 0 8M16.2 8a6 6 0 0 1 0 8M4.6 4.8a10.4 10.4 0 0 0 0 14.4M19.4 4.8a10.4 10.4 0 0 1 0 14.4',
   search: 'M18 11a7 7 0 1 1-14 0 7 7 0 0 1 14 0M16.2 16.2 21 21',
   mapPin: 'M12 21.5S19 14.9 19 9.8A7 7 0 0 0 5 9.8C5 14.9 12 21.5 12 21.5M14.6 9.8a2.6 2.6 0 1 1-5.2 0 2.6 2.6 0 0 1 5.2 0',
