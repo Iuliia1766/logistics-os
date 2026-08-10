@@ -38,7 +38,8 @@
       "Bash(python3 -c \"s=open\\('supabase/migrations/0003_rls.sql'\\).read\\(\\); print\\('  \\\\$\\\\$ %s, parens %+d' % \\('even' if s.count\\('\\\\$\\\\$'\\)%2==0 else 'ODD', s.count\\('\\('\\)-s.count\\('\\)'\\)\\)\\)\")",
       "Bash(git init *)",
       "Bash(git add *)",
-      "Bash(git -c 'user.name=Iuliia Bakhshalieva' -c user.email=iuliia.bakhshalieva@gmail.com commit -q -m ' *)"
+      "Bash(git -c 'user.name=Iuliia Bakhshalieva' -c user.email=iuliia.bakhshalieva@gmail.com commit -q -m ' *)",
+      "Bash(git grep *)"
     ]
   }
 }

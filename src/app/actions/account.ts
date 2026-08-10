@@ -54,3 +54,38 @@ export async function setHomeZip(zip: string): Promise<ActionResult> {
   revalidatePath('/driver');
   return { ok: true, message: `Now running out of ${place.city}, ${place.state}.` };
 }
+
+/**
+ * Create or edit the signed-in user's profile.
+ *
+ * Goes through upsert_my_profile() rather than a table write so that
+ * `role` and `is_premium` stay unreachable — role decides which portal
+ * you get, is_premium is the paid tier.
+ */
+export async function saveProfile(formData: FormData): Promise<ActionResult> {
+  const str = (k: string) => String(formData.get(k) ?? '').trim();
+
+  const fullName = str('full_name');
+  if (!fullName) return { ok: false, message: 'Enter your name.' };
+
+  const role = str('role');
+  const homeZip = str('home_zip');
+  if (role === 'driver' && homeZip && !/^\d{5}$/.test(homeZip)) {
+    return { ok: false, message: 'A home ZIP is five digits.' };
+  }
+
+  const supabase = await createClient();
+  const { data, error } = await supabase.rpc('upsert_my_profile', {
+    p_full_name: fullName,
+    p_company: str('company'),
+    p_mc_number: str('mc_number'),
+    p_equipment: str('equipment'),
+    p_home_zip: homeZip,
+    p_role: role || null,
+  });
+  if (error) return { ok: false, message: error.message };
+
+  const profile = Array.isArray(data) ? data[0] : data;
+  revalidatePath('/', 'layout');
+  return { ok: true, message: 'Profile saved.', ref: profile?.role };
+}

@@ -51,15 +51,17 @@ export function PortalChrome({
           <span className="chip"><Icon name="building" size={13} /> {profile.company || 'Shipper'}</span>
         )}
 
-        <div className="who">
+        {/* the name is the way into the profile — where people look for it */}
+        <Link className="who who-link" href="/account" title="Your profile">
           <div className="avatar">{initials}</div>
           <div>
-            <div className="who-t">{profile.full_name || 'Account'}</div>
+            <div className="who-t">{profile.full_name || 'Add your name'}</div>
             <div className="who-d">
-              {profile.company}{isDriver && profile.mc_number ? ` · ${profile.mc_number}` : ''}
+              {profile.company || 'Complete your profile'}
+              {isDriver && profile.mc_number ? ` · ${profile.mc_number}` : ''}
             </div>
           </div>
-        </div>
+        </Link>
 
         <form action={signOut}>
           <button className="chip chip-btn" type="submit" title="Sign out">
