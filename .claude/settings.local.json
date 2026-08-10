@@ -47,7 +47,16 @@
       "Read(//private/tmp/**)",
       "Bash(npm run *)",
       "Bash(sed -e 's/=.*/=<redacted>/' .env.local)",
-      "Bash(awk -F= '{print $1\": \"length\\($2\\)}' .env.local)"
+      "Bash(awk -F= '{print $1\": \"length\\($2\\)}' .env.local)",
+      "Bash(git commit *)",
+      "Bash(git remote *)",
+      "Bash(git push *)",
+      "Bash(gh auth *)",
+      "Bash(git config *)",
+      "Bash(xcode-select -p)",
+      "Bash(git credential-osxkeychain *)",
+      "Bash(git --version)",
+      "Bash(git ls-remote *)"
     ]
   }
 }
