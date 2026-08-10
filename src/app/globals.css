@@ -60,6 +60,7 @@ html,body{margin:0;padding:0}
 body{font-family:var(--f-sans);color:var(--ink-2);background:var(--ground);-webkit-font-smoothing:antialiased}
 button,input,select,textarea{font:inherit;color:inherit}
 button{cursor:pointer;background:none;border:none;padding:0}
+a{color:inherit;text-decoration:none}
 :focus-visible{outline:2px solid var(--accent);outline-offset:2px;border-radius:4px}
 .mono{font-family:var(--f-mono);font-variant-numeric:tabular-nums}
 .disp{font-family:var(--f-disp)}
@@ -376,19 +377,25 @@ select.input{appearance:none;background-image:linear-gradient(45deg,transparent 
 }
 
 /* ============ LANDING ============
-   The front door. Its whole job is the two account choices, so the
-   hero states the thesis and gets out of the way of the cards. */
+   The marketing front door for freightforwardco.com. It runs problem →
+   solution → how → mission → audience → carriers, then resolves into the
+   two account choices, because "get started" means nothing until a role
+   is picked. Sections share one rhythm: eyebrow, headline, body. */
 .landing{min-height:100vh;display:flex;flex-direction:column;background:var(--ground)}
 
-.ld-nav{border-bottom:1px solid var(--line);background:var(--surface)}
+.ld-nav{border-bottom:1px solid var(--line);background:var(--surface);
+  position:sticky;top:0;z-index:20}
 .ld-nav-inner{max-width:1060px;margin:0 auto;padding:14px 24px;
   display:flex;align-items:center;justify-content:space-between;gap:16px}
+.ld-nav-links{display:flex;align-items:center;gap:22px;margin-left:auto;margin-right:6px}
+.ld-nav-links a{font-size:.83rem;color:var(--ink-3);transition:color .15s}
+.ld-nav-links a:hover{color:var(--ink)}
 .ld-nav-actions{display:flex;align-items:center;gap:10px}
-.ld-nav-actions .btn{padding:8px 14px}
+.ld-nav-actions .btn{padding:8px 14px;width:auto}
 
 .ld-main{flex:1;max-width:1060px;width:100%;margin:0 auto;padding:0 24px}
 
-.ld-hero{position:relative;padding:64px 0 40px;max-width:44rem}
+.ld-hero{position:relative;padding:72px 0 44px;max-width:44rem}
 .ld-route{position:absolute;inset:auto 0 0 -24px;width:calc(100% + 48px);height:180px;
   z-index:0;pointer-events:none}
 .ld-trace{stroke-dasharray:8 10;animation:ld-trace 30s linear infinite}
@@ -396,13 +403,77 @@ select.input{appearance:none;background-image:linear-gradient(45deg,transparent 
 @media (prefers-reduced-motion:reduce){.ld-trace{animation:none}}
 .ld-eyebrow{position:relative;z-index:1;font-size:.72rem;letter-spacing:.1em;
   text-transform:uppercase;color:var(--ink-4);font-weight:500;margin:0 0 14px}
-.ld-head{position:relative;z-index:1;font-family:var(--f-disp);font-size:clamp(2rem,5vw,2.9rem);
-  font-weight:600;line-height:1.08;letter-spacing:-.02em;color:var(--ink);margin:0 0 16px;
+.ld-head{position:relative;z-index:1;font-family:var(--f-disp);font-size:clamp(2.1rem,5.4vw,3.2rem);
+  font-weight:600;line-height:1.06;letter-spacing:-.02em;color:var(--ink);margin:0 0 18px;
   text-wrap:balance}
-.ld-sub{position:relative;z-index:1;font-size:1rem;line-height:1.65;color:var(--ink-3);
+.ld-sub{position:relative;z-index:1;font-size:1.03rem;line-height:1.65;color:var(--ink-3);
   margin:0;max-width:38rem}
+.ld-hero-cta{position:relative;z-index:1;display:flex;flex-wrap:wrap;gap:11px;margin-top:28px}
+.ld-hero-cta .btn{width:auto;padding:11px 20px}
 
-.ld-doors{display:grid;grid-template-columns:1fr 1fr;gap:16px;padding:8px 0 0}
+.ld-trust{margin:0;padding:16px 0 4px;border-top:1px solid var(--line-soft);
+  font-size:.8rem;line-height:1.6;color:var(--ink-4);max-width:46rem}
+
+/* One section rhythm, so every block below the hero reads the same way. */
+.ld-sec{padding:64px 0 0;max-width:46rem}
+.ld-h2{font-family:var(--f-disp);font-size:clamp(1.5rem,3.2vw,2rem);font-weight:600;
+  line-height:1.15;letter-spacing:-.015em;color:var(--ink);margin:0 0 16px;text-wrap:balance}
+.ld-body{font-size:.95rem;line-height:1.72;color:var(--ink-3);margin:0;max-width:40rem}
+.ld-body + .ld-body{margin-top:14px}
+.ld-body-lead{color:var(--ink-2);font-weight:500}
+
+.ld-features{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:34px}
+.ld-feature{background:var(--surface);border:1px solid var(--line);border-radius:var(--r-lg);
+  padding:20px;box-shadow:var(--shadow);transition:border-color .15s,box-shadow .15s}
+.ld-feature:hover{border-color:var(--accent-line);box-shadow:var(--shadow-lg)}
+.ld-feature-ico{display:inline-flex;align-items:center;justify-content:center;width:38px;height:38px;
+  border-radius:11px;background:var(--accent-soft);border:1px solid var(--accent-line);
+  color:var(--accent);margin-bottom:13px}
+.ld-feature h3{font-family:var(--f-disp);font-size:1rem;font-weight:600;color:var(--ink);
+  margin:0 0 8px;text-wrap:balance}
+.ld-feature p{font-size:.85rem;line-height:1.65;color:var(--ink-3);margin:0}
+
+.ld-steps{list-style:none;margin:32px 0 0;padding:0;display:flex;flex-direction:column;gap:0}
+.ld-step{display:flex;gap:16px;padding:18px 0;border-top:1px solid var(--line)}
+.ld-step:last-child{border-bottom:1px solid var(--line)}
+.ld-step-n{flex-shrink:0;display:flex;align-items:center;justify-content:center;
+  width:30px;height:30px;border-radius:50%;background:var(--accent-soft);
+  border:1px solid var(--accent-line);color:var(--accent);
+  font-family:var(--f-mono);font-size:.8rem;font-weight:600}
+.ld-step-body h3{display:flex;align-items:center;gap:8px;font-family:var(--f-disp);
+  font-size:.98rem;font-weight:600;color:var(--ink);margin:4px 0 6px}
+.ld-step-body h3 svg{color:var(--ink-4)}
+.ld-step-body p{font-size:.87rem;line-height:1.65;color:var(--ink-3);margin:0}
+
+/* The mission is the one section that is a claim about us, not the product,
+   so it gets its own surface to sit apart from the feature copy. */
+.ld-mission{margin:64px 0 0;padding:34px;border-radius:var(--r-lg);
+  background:var(--surface);border:1px solid var(--line);
+  border-left:3px solid var(--accent);box-shadow:var(--shadow)}
+.ld-mission .ld-body{max-width:44rem}
+
+.ld-sec-split{display:grid;grid-template-columns:1fr auto;gap:32px;align-items:center;
+  max-width:none}
+.ld-sec-split > div:first-child{max-width:40rem}
+.ld-serve-art{display:flex;gap:10px;color:var(--ink-4)}
+.ld-serve-art svg{width:56px;height:56px;padding:14px;border-radius:14px;
+  background:var(--surface);border:1px solid var(--line);box-shadow:var(--shadow)}
+
+.ld-carriers{margin:64px 0 0;padding:34px;border-radius:var(--r-lg);
+  background:var(--surface-2);border:1px solid var(--line)}
+.ld-carriers-ico{display:inline-flex;align-items:center;justify-content:center;
+  width:46px;height:46px;border-radius:13px;background:var(--accent-soft);
+  border:1px solid var(--accent-line);color:var(--accent);margin-bottom:16px}
+.ld-carriers .ld-body{max-width:42rem}
+.ld-carriers-cta{width:auto;margin-top:22px;padding:11px 20px}
+
+.ld-final{margin:72px 0 0;padding:44px 0 0;border-top:1px solid var(--line);text-align:center}
+.ld-final-h{font-family:var(--f-disp);font-size:clamp(1.6rem,3.6vw,2.2rem);font-weight:600;
+  line-height:1.12;letter-spacing:-.015em;color:var(--ink);margin:0 0 14px;text-wrap:balance}
+.ld-final-sub{font-size:.98rem;line-height:1.65;color:var(--ink-3);margin:0 auto 32px;
+  max-width:34rem}
+
+.ld-doors{display:grid;grid-template-columns:1fr 1fr;gap:16px;padding:8px 0 0;text-align:left}
 .ld-door{background:var(--surface);border:1px solid var(--line);border-radius:var(--r-lg);
   padding:22px;display:flex;flex-direction:column;box-shadow:var(--shadow);
   transition:border-color .15s,box-shadow .15s}
@@ -418,29 +489,32 @@ select.input{appearance:none;background-image:linear-gradient(45deg,transparent 
 .ld-points li svg{flex-shrink:0;margin-top:3px;color:var(--good)}
 .ld-door-cta{width:100%;justify-content:center}
 
-.ld-signin{text-align:center;font-size:.85rem;color:var(--ink-3);margin:20px 0 0}
+.ld-signin{text-align:center;font-size:.85rem;color:var(--ink-3);margin:24px 0 0}
 
-.ld-facts{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;
-  margin:56px 0 0;padding:32px 0 0;border-top:1px solid var(--line)}
-.ld-fact-ico{display:inline-flex;align-items:center;justify-content:center;width:32px;height:32px;
-  border-radius:9px;background:var(--surface-3);border:1px solid var(--line);
-  color:var(--ink-3);margin-bottom:11px}
-.ld-fact h3{font-family:var(--f-disp);font-size:.92rem;font-weight:600;color:var(--ink);
-  margin:0 0 7px;text-wrap:balance}
-.ld-fact p{font-size:.83rem;line-height:1.65;color:var(--ink-3);margin:0}
-
-.ld-foot{max-width:1060px;width:100%;margin:0 auto;padding:48px 24px 28px;
-  display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;
+.ld-foot{max-width:1060px;width:100%;margin:72px auto 0;padding:28px 24px;
+  border-top:1px solid var(--line)}
+.ld-foot-top{display:flex;justify-content:space-between;align-items:center;
+  gap:20px;flex-wrap:wrap}
+.ld-foot-links{display:flex;gap:20px;flex-wrap:wrap}
+.ld-foot-links a{font-size:.82rem;color:var(--ink-3);transition:color .15s}
+.ld-foot-links a:hover{color:var(--ink)}
+.ld-foot-bot{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;
+  margin-top:22px;padding-top:16px;border-top:1px solid var(--line-soft);
   font-size:.74rem;color:var(--ink-4)}
 
-@media (max-width:820px){
-  .ld-doors{grid-template-columns:1fr}
-  .ld-facts{grid-template-columns:1fr;gap:26px;margin-top:40px}
-  .ld-hero{padding:44px 0 32px}
-}
+/* The nav is sticky, so anchored sections need to clear it when jumped to. */
+#how,#mission,#carriers,#signup{scroll-margin-top:84px}
 
-/* the nav Sign up button jumps to the cards; keep them off the top edge */
-.ld-doors{scroll-margin-top:24px}
+@media (max-width:820px){
+  .ld-nav-links{display:none}
+  .ld-doors,.ld-features{grid-template-columns:1fr}
+  .ld-hero{padding:48px 0 32px}
+  .ld-sec{padding-top:52px}
+  .ld-sec-split{grid-template-columns:1fr;gap:24px}
+  .ld-serve-art svg{width:48px;height:48px;padding:12px}
+  .ld-mission,.ld-carriers{padding:26px;margin-top:52px}
+  .ld-final{margin-top:56px;padding-top:36px}
+}
 
 /* ============ ACCOUNT ============ */
 .who-link{text-decoration:none;color:inherit;border-radius:var(--r);padding:3px 6px;margin:-3px -6px;

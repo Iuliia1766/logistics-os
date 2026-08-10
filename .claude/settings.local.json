@@ -44,7 +44,10 @@
       "Bash(git check-ignore *)",
       "Bash(curl -s --max-time 20 https://nodejs.org/dist/index.json)",
       "Bash(curl -s -o /dev/null --max-time 2 http://localhost:3111/login)",
-      "Read(//private/tmp/**)"
+      "Read(//private/tmp/**)",
+      "Bash(npm run *)",
+      "Bash(sed -e 's/=.*/=<redacted>/' .env.local)",
+      "Bash(awk -F= '{print $1\": \"length\\($2\\)}' .env.local)"
     ]
   }
 }
