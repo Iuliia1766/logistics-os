@@ -276,6 +276,7 @@ export function Landing() {
             <a href="#how">How it works</a>
             <a href="#carriers">For carriers</a>
             <a href="#signup">Get started</a>
+            <Link href="/privacy">Privacy Policy</Link>
             <Link href="/login">Sign in</Link>
           </nav>
         </div>
